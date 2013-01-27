@@ -1,6 +1,6 @@
 if(!isServer) exitWith {};
 
-//waitUntil{sleep 1; staticGunSpawningComplete};
+waitUntil{staticGunSpawningComplete};
 
 diag_log format["WASTELAND SERVER - Started Mission State"];
 

@@ -6,6 +6,8 @@
 
 if(!X_Server) exitWith {};
 
+waitUntil{objectSpawnComplete};
+
 private ["_counter","_pos","_markerName","_marker","_hint","_safePos","_countActual","_boxes", "_nerfBoxes", "_currBox"];
 
 _counter = 0;
@@ -35,3 +37,4 @@ while {_counter < 770} do
 };
 
 diag_log format["WASTELAND SERVER - %1 Ammo Caches Spawned",_countActual];
+ammoCrateSpawnComplete = true;

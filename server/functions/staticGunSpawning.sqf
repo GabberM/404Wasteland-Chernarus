@@ -6,6 +6,8 @@
 
 if(!X_Server) exitWith {};
 
+waitUntil{ammoCrateSpawnComplete};
+
 private ["_counter","_pos","_markerName","_marker","_hint","_newpos","_countActual"];
 _counter = 0;
 _countActual = 0;
@@ -31,3 +33,4 @@ while {_counter < 770} do
 };
 
 diag_log format["WASTELAND SERVER - %1 Static Guns Spawned",_countActual];
+staticGunSpawningComplete = true;

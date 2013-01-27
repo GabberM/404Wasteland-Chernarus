@@ -7,6 +7,8 @@
 
 if(!X_Server) exitWith {};
 
+waitUntil{staticGunSpawningComplete};
+
 private ["_counter","_position","_markerName","_marker","_hint","_newPos","_countActual", "_i", "_doSpawnWreck"];
 _counter = 0;
 _countActual = 0;
@@ -61,3 +63,4 @@ for "_i" from 1 to 24 do {
 };
 
 diag_log format["WASTELAND SERVER - %1 Static helis Spawned",_countActual];
+staticHeliSpawningComplete = true;

@@ -137,7 +137,6 @@ while {_run} do
         _startTime = floor(time);
 		_result = 0;
     } else {
-    	sleep 5;
+    	sleep 1;
     };
-	sleep 1;
 };

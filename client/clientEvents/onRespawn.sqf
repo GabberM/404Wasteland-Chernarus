@@ -17,13 +17,11 @@ _corpse removeAction playerMenuId;
 player call playerSetup;
 waitUntil {playerSetupComplete};
 
-[] execVM "client\clientEvents\onMouseWheel.sqf";
-
 true spawn playerSpawn;
 
 [] spawn {
 	waitUntil{respawnDialogActive};
-	waitUntil{sleep 0.1; !respawnDialogActive};
+	waitUntil{!respawnDialogActive};
 
 	if(!isNull pvar_PlayerTeamKiller) then {
 		pDialogTeamkiller = pvar_PlayerTeamKiller;
