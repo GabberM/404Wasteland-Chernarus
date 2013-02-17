@@ -4,7 +4,7 @@
 //	@file Created: 20/11/2012 05:19
 //	@file Description: The server init.
 //	@file Args:
-
+#include "setup.sqf"
 if(!X_Server) exitWith {};
 
 sideMissions = 1;
@@ -21,6 +21,8 @@ waitUntil{scriptDone _serverCompiledScripts};
 
 diag_log format["WASTELAND SERVER - Server Complie Finished"];
 
+#ifdef __DEBUG__
+#else
 //Execute Server Spawning.
 if (serverSpawning == 1) then {
     diag_log format["WASTELAND SERVER - Initilizing Server Spawning"];
@@ -32,13 +34,17 @@ if (serverSpawning == 1) then {
 	waitUntil{sleep 0.1; scriptDone _boxSpawn};
     _gunSpawn = [] ExecVM "server\functions\staticGunSpawning.sqf";
 	waitUntil{sleep 0.1; scriptDone _gunSpawn};
-    _heliSpawn= [] ExecVM "server\functions\staticHeliSpawning.sqf";
+    _heliSpawn = [] ExecVM "server\functions\staticHeliSpawning.sqf";
+    waitUntil{sleep 0.1; scriptDone _heliSpawn};
+    _markerClean = [] ExecVM "server\functions\cleanMarkers.sqf";
+    waitUntil{sleep 0.1; scriptDone _markerClean};
 };
-
+#endif
 //Execute Server Missions.
 if (sideMissions == 1) then {
 	diag_log format["WASTELAND SERVER - Initilizing Missions"];
     [] execVM "server\missions\sideMissionController.sqf";
+    sleep 5;
     [] execVM "server\missions\mainMissionController.sqf";
     //[] execVM "server\missions\worldMissionController.sqf";
 };
